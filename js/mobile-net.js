@@ -65,31 +65,12 @@ $("#predict-button").click(async function () {
 });
 
 function preprocessImage(image, modelName) {
-	let tensor = tf.fromPixels(image)	
-
-    const resized = tf.image.resizeBilinear(tensor, [299, 299])
-    // Normalize the image 
-    const offset = tf.scalar(255.0);
-    //const normalized = tf.scalar(1.0).sub(resized.div(offset));
-    tensor = tensor.div(offset);
-    //We add a dimension to get a batch shape 
-    //const batched = normalized.expandDims(0)
-    //return batched
+	let tensor = tf.fromPixels(image)
+		.resizeNearestNeighbor([299, 299])
+		.toFloat();
+    		.div(tf.scalar(255.0))
+	    	//const offset = ;
 	
-		//.resizeNearestNeighbor([224, 224])
-		tensor.toFloat();
-	
-
-	if (modelName === undefined) {
-		return tensor.expandDims();
-	} else if (modelName === "mobilenet") {
-		let offset = tf.scalar(127.5);
-		return tensor.sub(offset)
-			.div(offset)
-			.expandDims();
-	} else {
-		alert("Unknown model name..")
-	}
 }
 
 function loadDemoImage() {
