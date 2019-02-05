@@ -30,6 +30,7 @@ function renderImage(file) {
 }
 
 $("#predict-button").click(async function () {
+	console.log("fatih);
 	if (model == undefined) {
 		alert("Please load the model first..")
 	}
@@ -65,6 +66,7 @@ $("#predict-button").click(async function () {
 });
 
 function preprocessImage(image, modelName) {
+	console.log("fatih2");
 	let tensor = tf.fromPixels(image)
 		.resizeNearestNeighbor([299, 299])
 		.div(tf.scalar(255.0))
