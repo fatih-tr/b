@@ -6,7 +6,7 @@ async function loadModel() {
 	loader.style.display = "block";
 	modelName = "mobilenet";
 	model = undefined;
-	model = await tf.loadModel('https://gogul09.github.io/models/mobilenet/model.json');
+	model = await tf.loadModel('https://fatih-tr.github.io/a/model/model.json');
 	loader.style.display = "none";
 	load_button.disabled = true;
 	load_button.innerHTML = "Loaded Model";
@@ -65,9 +65,20 @@ $("#predict-button").click(async function () {
 });
 
 function preprocessImage(image, modelName) {
-	let tensor = tf.fromPixels(image)
-		.resizeNearestNeighbor([224, 224])
-		.toFloat();
+	let tensor = tf.fromPixels(image)	
+
+    const resized = tf.image.resizeBilinear(tensor, [299, 299])
+    // Normalize the image 
+    const offset = tf.scalar(255.0);
+    //const normalized = tf.scalar(1.0).sub(resized.div(offset));
+    tensor = tensor.div(offset);
+    //We add a dimension to get a batch shape 
+    //const batched = normalized.expandDims(0)
+    //return batched
+	
+		//.resizeNearestNeighbor([224, 224])
+		tensor.toFloat();
+	
 
 	if (modelName === undefined) {
 		return tensor.expandDims();
