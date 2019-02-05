@@ -30,7 +30,7 @@ function renderImage(file) {
 }
 
 $("#predict-button").click(async function () {
-	console.log("fatih);
+	alert("predict tıklandı")
 	if (model == undefined) {
 		alert("Please load the model first..")
 	}
