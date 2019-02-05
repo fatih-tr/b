@@ -67,8 +67,7 @@ $("#predict-button").click(async function () {
 function preprocessImage(image, modelName) {
 	let tensor = tf.fromPixels(image)
 		.resizeNearestNeighbor([299, 299])
-		.toFloat();
-    		.div(tf.scalar(255.0))
+		.div(tf.scalar(255.0))
 	    	//const offset = ;
 	
 }
