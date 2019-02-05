@@ -17,13 +17,13 @@
 
 const IMAGENET_CLASSES = {
 0: 'Black Negra Collena',
-1: 'Hvalhvas  ',
-2: 'Kankolla  ',
-3: 'RedRojo  ',
-4: 'Salcedo  ',
+1: 'Hvalhvas',
+2: 'Kankolla',
+3: 'RedRojo',
+4: 'Salcedo',
 5: 'Yellow Armerilla Demorongoni',
 6: 'Yelow Armerilla SacoCO',
-7: 'İlpainia  ',
+7: 'İlpainia',
 8: 'İnia 431 Altpleno',
 9: 'İnia Santa Ana'
 };
